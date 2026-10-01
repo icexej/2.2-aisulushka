@@ -1,10 +1,10 @@
-
 class LibraryBook {
     private String title;
     private String author;
     private String isbn;
     private int pages;
     private boolean isAvailable;
+
 
     public LibraryBook() {
         this.title = "Untitled";
@@ -14,6 +14,7 @@ class LibraryBook {
         this.isAvailable = true;
     }
 
+
     public LibraryBook(String title, String author, String isbn, int pages, boolean isAvailable) {
         setTitle(title);
         setAuthor(author);
@@ -21,6 +22,7 @@ class LibraryBook {
         setPages(pages);
         this.isAvailable = isAvailable;
     }
+
 
     public String getTitle() {
         return title;
@@ -74,11 +76,13 @@ class LibraryBook {
         isAvailable = available;
     }
 
+
     public void displayInfo() {
         System.out.println("Book: " + title + " | Author: " + author +
                 " | ISBN: " + isbn + " | Pages: " + pages +
                 " | Available: " + (isAvailable ? "Yes" : "No"));
     }
+
 
     public void borrowBook() {
         if (isAvailable) {
@@ -89,19 +93,20 @@ class LibraryBook {
         }
     }
 
+
     public void returnBook() {
         isAvailable = true;
         System.out.println("-> Book '" + title + "' has been returned to the library.");
     }
 }
 
-
 public class Main {
     public static void main(String[] args) {
+
         LibraryBook book1 = new LibraryBook();
-        LibraryBook book2 = new LibraryBook("Clean Code", "Robert C. Martin", "978-0132350884", 464, true);
-        LibraryBook book3 = new LibraryBook("The Pragmatic Programmer", "Andrew Hunt", "978-0201616224", 352, true);
-        LibraryBook book4 = new LibraryBook("Java: The Complete Reference", "Herbert Schildt", "978-1260440232", 1248, false);
+        LibraryBook book2 = new LibraryBook("Master and Margarita", "Mikhail Bulgakov", "978-5-699-12345-1", 480, true);
+        LibraryBook book3 = new LibraryBook("Crime and Punishment", "Fyodor Dostoevsky", "978-5-17-098765-2", 672, true);
+        LibraryBook book4 = new LibraryBook("Eugene Onegin", "Alexander Pushkin", "978-5-04-111111-3", 224, false);
 
         System.out.println("=== INITIAL BOOK LIST ===");
         book1.displayInfo();
@@ -109,23 +114,34 @@ public class Main {
         book3.displayInfo();
         book4.displayInfo();
 
-        System.out.println("\n[Testing Getters] Checking author of book2: " + book2.getAuthor());
+
+        System.out.println("\n[Testing Getters] Author of book2: " + book2.getAuthor());
+
 
         System.out.println("\n[Testing Setters] Updating book1 details...");
-        book1.setTitle("Effective Java");
-        book1.setAuthor("Joshua Bloch");
-        book1.setPages(-50);
-        book1.setPages(412);
+        book1.setTitle("War and Peace");
+        book1.setAuthor("Leo Tolstoy");
+        book1.setPages(-150);
+        book1.setPages(1225);
         book1.displayInfo();
 
 
         System.out.println("\n[Testing Methods]");
         book2.borrowBook();
-        book2.borrowBook();
         book4.returnBook();
+
 
         System.out.println("\n=== UPDATED BOOK LIST ===");
         book2.displayInfo();
         book4.displayInfo();
+
+
+        System.out.println(book2.getTitle());
+        System.out.println(book2.getIsbn());
+        System.out.println(book3.getPages());
+        System.out.println(book4.isAvailable());
+        book4.setAvailable(true);
     }
 }
+
+
